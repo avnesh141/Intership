@@ -1,0 +1,58 @@
+.profilephoto{
+    width: 100px;
+    
+}
+.profile h1{
+    font-size: 30px;
+    font-weight: 500;
+}
+.profilephoto img{
+    border-radius: 30px;
+    margin: 20px;
+}
+
+.profile{ 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+.profiledetails{
+    width: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 400;
+}
+.applications {
+    font-size: 20px;
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.posts{
+    font-size: 20px;
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.applications  ul{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: center; */
+}
+.posts ul{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: center; */
+}
+
