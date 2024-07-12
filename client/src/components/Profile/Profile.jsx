@@ -31,6 +31,7 @@ useEffect(() => {
     if(json.success)
     {
         console.log(json)
+        json.info.reverse()
         setInfo(json.info);
     }
   }
@@ -87,12 +88,13 @@ useEffect(() => {
        </div>}
       { <div className="posts">
         <h1>Recent Login</h1>
-        {loginInfo!=[] && loginInfo.map((ele,key)=>{
+        {loginInfo!=[] && loginInfo.slice(0,Math.min(5,loginInfo.length)).map((ele,key)=>{
             return <ul>
                     <li>{ele.os}</li>
                     <li>{ele.ip}</li>
                     <li>{ele.device}</li>
                     <li>{ele.browser}</li>
+                    <li>{ele.timestamp.slice(0,10)+" "+ele.timestamp.slice(12,20)}</li>
                 </ul>
              })}
        </div>}

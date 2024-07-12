@@ -13,9 +13,9 @@ const {setLoggedIn,setLoggedInEmp}=cntxt;
   const navigate=useNavigate()
   const [data, setData] = useState({type:`${props.type}`,name:"",email:"",number:"",password:"",
     browser:sessionStorage.getItem('browser'),
-    os:sessionStorage.getItem('browser'),
-    ip:sessionStorage.getItem('browser'),
-    device:sessionStorage.getItem('browser')})
+    os:sessionStorage.getItem('os'),
+    ip:sessionStorage.getItem('ip'),
+    device:sessionStorage.getItem('device')})
   const url=props.type=="Candidate"?'/login':'/loginemployee';
   const token=props.type=='Candidate'?'tokenCand':'tokenEmp';
   console.log(url);
@@ -48,19 +48,39 @@ const {setLoggedIn,setLoggedInEmp}=cntxt;
           console.log(json)
           if(json.success)
             {
-              toast.success("Registered Successfully");
+              sessionStorage.setItem('email',data.email)
               localStorage.setItem(token, json.authtoken);
               if(props.type=="Candidate")
               {
-                navigate('/');
-                setLoggedIn(true);
-                setLoggedInEmp(false);
+                localStorage.setItem(token, json.authtoken);
+                if(sessionStorage.getItem('browser')=='Chrome')
+                 {
+                    navigate('/verifyemail');
+                 }
+                 else
+                 {
+                   toast.success("Logged in successfully");
+                   localStorage.removeItem('tokenEmp');
+                   setLoggedIn(true);
+                   setLoggedInEmp(false);
+                   navigate('/');
+                 }
               }
               else
               {
-                navigate('/hire')
-                setLoggedIn(false);
-                setLoggedInEmp(true);
+                 
+                  localStorage.setItem(token, json.authtoken);
+                   if(sessionStorage.getItem('browser')=='Chrome')
+                    {
+                       navigate('/verifyemail');
+                    }
+                    else
+                    {
+                      setLoggedIn(false);
+                      localStorage.removeItem('tokenCand');
+                      setLoggedInEmp(true);
+                      navigate('/hire');
+                    }
               }
             }
             else

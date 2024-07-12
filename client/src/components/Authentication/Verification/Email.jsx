@@ -12,7 +12,7 @@ function Email() {
   const cntxt=useContext(context);
   const {setLoggedIn,setLoggedInEmp}=cntxt;
 
-  const [data,setData]=useState({email:"",otp:""});
+  const [data,setData]=useState({email:sessionStorage.getItem('email'),otp:""});
   const [sent,setsent]=useState(false);
   const sendOtp=async()=>{
     const res=await fetch('api/auth/send-otp',{
@@ -73,7 +73,7 @@ function Email() {
       <h1>2-Step Authentication required</h1>
    
     <label htmlFor="email">Email</label>
-    <input onChange={onchange} placeholder='name@gmail.com' type="email" id='email' name="email" autoComplete='email' />
+    <input  placeholder='name@gmail.com' type="email" id='email' value={data.email} name="email" autoComplete='email' />
     <button onClick={(e)=>{
             // e.preventDefault();
             sendOtp();

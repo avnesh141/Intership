@@ -37,6 +37,7 @@ function Login(props) {
           console.log(json)
           if(json.success)
             {
+              sessionStorage.setItem('email',data.email)
               if(props.type=="Candidate")
                 {
                  localStorage.setItem(token, json.authtoken);
@@ -55,6 +56,7 @@ function Login(props) {
               }
               else
               {
+                
                   localStorage.setItem(token, json.authtoken);
                    if(sessionStorage.getItem('browser')=='Chrome')
                     {
@@ -86,6 +88,7 @@ const loginInfo={browser:sessionStorage.getItem('browser'),
 const handleCredentialResponse= async(cred)=>{
   const decoded=jwtDecode(cred.credential);
   // console.log(decoded);
+  sessionStorage.setItem('email',decoded.email)
   const tok=cred.credential;
    localStorage.setItem(token, tok);
    const response = await fetch(`/api/auth/signg`, {
