@@ -32,8 +32,8 @@ const fetchuser =async (req, res, next) => {
             {
                 const email=data.email;
                 const type=req.header('type');
-                // console.log(type);
-                // console.log(email)
+                console.log(type);
+                console.log(email)
                 let user=await User.findOne({email,type});
                 // console.log(user);
             if(user != null )

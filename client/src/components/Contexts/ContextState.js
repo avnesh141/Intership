@@ -72,10 +72,9 @@ function ContextState(props) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "type":sessionStorage.getItem('type')
         }
       })
-      console.log(window.onload)
+      // console.log(window.onload)
       let json = await response.json();
       setdata(json.posts);
       // data.forEach(element => {
@@ -110,8 +109,10 @@ function ContextState(props) {
     const func = async () => {
 
       let token = "tokenCand";
+      let type="Candidate"
       if (loggedInEmp) {
         token = "tokenEmp";
+        type="Employee"
       }
       if (!loggedIn && !loggedInEmp) {
         return;
@@ -122,7 +123,7 @@ function ContextState(props) {
         headers: {
           "Content-Type": "application/json",
           "authtoken": JSON.stringify(localStorage.getItem(token)),
-          "type":sessionStorage.getItem('type')
+          "type":type
         }
       })
       const json = await response.json();
@@ -132,27 +133,27 @@ function ContextState(props) {
         headers: {
           "Content-Type": "application/json",
           "authtoken": JSON.stringify(localStorage.getItem(token)),
-          "type":sessionStorage.getItem('type')
+          "type":type
         }
       })
       const json2=await response2.json();
-      console.log(json2.user)
+      // console.log(json2.user)
       setuser(json2.user);
       const response3 = await fetch("/api/posts/getpostuser", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           "authtoken": JSON.stringify(localStorage.getItem(token)),
-          "type":sessionStorage.getItem('type')
+          "type":type
         }
       })
       const json3=await response3.json();
-      console.log(json3)
-      console.log(json3.posts)
+      // console.log(json3)
+      // console.log(json3.posts)
       if(json.success){
 
         setuserPosts(json3.posts);
-        console.log(userPosts)
+        // console.log(userPosts)
       }
     }
     func();

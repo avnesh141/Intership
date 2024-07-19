@@ -13,7 +13,7 @@ function ManageApplications() {
         headers:{
             "Content-Type":"application/json",
             "authtoken":JSON.stringify(localStorage.getItem('tokenEmp')),
-            "type":sessionStorage.getItem('type')
+            "type":"Employee"
           },
      })
      const json=await response.json();

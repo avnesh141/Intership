@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './Plans.css'
 import context from '../Contexts/Context';
+import { toast } from 'react-toastify';
 
 
 
@@ -9,11 +10,12 @@ function Plans() {
 
 
     const cntxt = useContext(context);
-    const { user,change,setChange } = cntxt;
+    const { user, change, setChange } = cntxt;
+    let type = "Employee"
     let token = "tokenEmp";
-
-    if (sessionStorage.getItem('type') == "Candidate") {
+    if (localStorage.getItem('tokenCand')) {
         token = "tokenCand";
+        type = "Candidate"
     }
     const [id, setId] = useState();
     const loadScript = (src) => {
@@ -37,7 +39,7 @@ function Plans() {
             headers: {
                 "Content-Type": "application/json",
                 "authtoken": JSON.stringify(localStorage.getItem(token)),
-                "type": sessionStorage.getItem('type')
+                "type": type
             },
             body: JSON.stringify({ amount: amount * 100, currency: "INR" })
         })
@@ -46,41 +48,36 @@ function Plans() {
         handleResponse(amount, json.order_id, plan);
 
     }
-    const subscribe = async (plan,jsn) => {
+    const subscribe = async (plan, jsn) => {
 
 
-        let token = "tokenEmp";
-        if (sessionStorage.getItem('type') == "Candidate") {
-            token = "tokenCand";
-        }
         const response = await fetch('api/auth/subscribe', {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "authtoken": JSON.stringify(localStorage.getItem(token)),
-                "type":sessionStorage.getItem('type')
+                "type": type
             },
-            body:JSON.stringify({plan})
+            body: JSON.stringify({ plan })
         })
         const json = await response.json();
         console.log(json.success);
-        if(json.success)
-        {
-            setChange(change+1);
+        if (json.success) {
+            setChange(change + 1);
             console.log(jsn);
             const resp = await fetch('api/auth/send-bill', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({plan:plan, email: user.email, status: jsn.status, currency: jsn.currency, method: jsn.method })
+                body: JSON.stringify({ plan: plan, email: user.email, status: jsn.status, currency: jsn.currency, method: jsn.method })
             })
             const json2 = await resp.json();
             console.log(json2);
         }
     }
 
-    const verify=async(plan)=>{
+    const verify = async (plan) => {
         const response = await fetch(`api/pay/payment/${id}`, {
             method: "GET",
             headers: {
@@ -90,8 +87,8 @@ function Plans() {
         const jsn = await response.json();
         console.log(jsn)
         if (jsn.success) {
-            subscribe(plan,jsn);
-        }     
+            subscribe(plan, jsn);
+        }
 
     }
 
@@ -123,8 +120,8 @@ function Plans() {
         }
         const paymentObject = new window.Razorpay(options);
         paymentObject.open()
-        
-        
+
+
     }
 
 
@@ -160,10 +157,13 @@ function Plans() {
                                     <li className="d-block py-2">&nbsp;</li>
                                 </ul>
                                 <div className="bottom-btn">
+                                    <button>
                                     <a className="btn btn-danger-gradiant btn-md text-white btn-block" onClick={() => {
+                                        toast.success("Wait while processing")
                                         createrazorPayorder(100, "Bronze")
                                         // subscribe("Bronze")
-                                    }}><span>Choose Plan</span></a>
+                                    }}><button>Choose Plan</button></a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -186,10 +186,14 @@ function Plans() {
                                     <li className="d-block py-2">Manage Your applications</li>
                                     ]                                </ul>
                                 <div className="bottom-btn">
+                                    <button>
+
                                     <a className="btn btn-success-gradiant btn-md text-white btn-block" onClick={() => {
+                                        toast.success("Wait while processing")
                                         createrazorPayorder(300, "Silver")
                                         subscribe("Silver")
                                     }}><span>Choose Plan</span></a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -213,9 +217,13 @@ function Plans() {
                                     <li className="d-block py-2">InternNet Exclusive Membership</li>
                                 </ul>
                                 <div className="bottom-btn">
+                                    <button>
+
                                     <a className="btn btn-success-gradiant btn-md text-white btn-block" onClick={() => {
+                                        toast.success("Wait while processing")
                                         createrazorPayorder(1000, "Gold")
                                     }}><span>Choose Plan</span></a>
+                                    </button>
                                 </div>
                             </div>
                         </div>

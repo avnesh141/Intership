@@ -16,8 +16,10 @@ function UpdateProfile() {
     const navigate=useNavigate();
 
     let token="tokenCand";
+    let type="Candidate"
     if(localStorage.getItem('tokenEmp'))
     {
+        type="Employee"
         token='tokenEmp';
     }
     const setprofile=async()=>{
@@ -27,7 +29,7 @@ function UpdateProfile() {
             headers:{
                 "Content-Type":'application/json',
                 "authtoken":JSON.stringify(localStorage.getItem(token)),
-                "type":sessionStorage.getItem('type')
+                "type":type
             },
             body:JSON.stringify({"picture":url})
         })

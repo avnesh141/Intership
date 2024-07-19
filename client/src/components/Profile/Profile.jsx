@@ -13,8 +13,10 @@ const [loginInfo,setInfo]=useState([]);
 // console.log(user)
 useEffect(() => {
     let token="tokenEmp";
-    if(sessionStorage.getItem('type')=="Candidate")
+    let type="Employee"
+    if(localStorage.getItem('tokenCand'))
     {
+      type="Candidate"
        token="tokenCand";
     }
   const func=async()=>{
@@ -24,7 +26,7 @@ useEffect(() => {
         headers:{
             "Content-type":"application/json",
             "authtoken":JSON.stringify(localStorage.getItem(token)),
-            "type":sessionStorage.getItem('type')
+            "type":type
         }
     })
     const json =await response.json();

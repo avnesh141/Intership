@@ -64,7 +64,7 @@ function Post() {
           headers:{
             "Content-Type":"application/json",
             "authtoken":JSON.stringify(localStorage.getItem('tokenEmp')),
-            "type":sessionStorage.getItem('type')
+            "type":"Employee"
           },
           body:JSON.stringify(postData)
         })

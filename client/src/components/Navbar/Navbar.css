@@ -65,7 +65,8 @@
 
 .register{
     background: #078edd;
-    width: 70px;
+    /* width: 70px; */
+    min-width: 70px;
     border-radius: 5px;
     color: white;
     padding: 5px;

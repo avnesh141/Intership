@@ -15,7 +15,7 @@ import Post from './components/Hire/Post';
 import Plans from './components/Subscriptions/Plans';
 import Profile from './components/Profile/Profile';
 import UpdateProfile from './components/Profile/UpdateProfile';
-import { useContext, useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import Email from './components/Authentication/Verification/Email';
 import Phone from './components/Authentication/Verification/Phone';
 import context from './components/Contexts/Context';
@@ -24,10 +24,9 @@ import JobsPage from './components/Jobs/JobsPage';
 import ManageApplications from './components/Hire/ManageApplications';
 function App() {
 
-const cntxt=useContext(context)
-const {authentic,setAuthentic,loggedIn,loggedInEmp}=cntxt; 
 
-  console.log("dkdk")
+
+  // console.log("dkdk")
   let browser="Chrome";
   function checkBrowser() { 
           
@@ -85,7 +84,7 @@ const {authentic,setAuthentic,loggedIn,loggedInEmp}=cntxt;
     // const regex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     // console.log(navigator.userAgent)
     // return regex.test(navigator.userAgent);
-    console.log(window.innerWidth)
+    // console.log(window.innerWidth)
     return ( ( window.innerWidth <= 400 )  );
   }
   
@@ -132,7 +131,7 @@ const {authentic,setAuthentic,loggedIn,loggedInEmp}=cntxt;
     sessionStorage.setItem('os',getOS());
      checkBrowser();
      let date= new Date().getHours();
-     console.log(date)
+    //  console.log(date)
      if(date<13 && date>=10)
       {
         // console.log("sjdk")
@@ -149,7 +148,7 @@ const {authentic,setAuthentic,loggedIn,loggedInEmp}=cntxt;
       }
       setMobile(mb);
       setshow(true);
-      console.log(mobile,dur,show);
+      // console.log(mobile,dur,show);
   },[])
   
   return (

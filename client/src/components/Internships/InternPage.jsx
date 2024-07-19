@@ -62,7 +62,7 @@ function InternPage(props) {
       headers:{
         "Content-Type":"application/json",
         "authtoken":JSON.stringify(localStorage.getItem('tokenCand')),
-        "type":sessionStorage.getItem('type')
+        "type":"Candidate"
       },
       body:JSON.stringify({"id":id})
     })
