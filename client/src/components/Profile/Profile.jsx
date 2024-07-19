@@ -7,10 +7,10 @@ function Profile() {
 const cntxt=useContext(context);
 const {user,userPosts,applications}=cntxt;
 // console.log(userPosts.length)
-// console.log(applications.length)
+// console.log(apptdcations.length)
 const navigate=useNavigate();
 const [loginInfo,setInfo]=useState([]);
-console.log(user)
+// console.log(user)
 useEffect(() => {
     let token="tokenEmp";
     if(sessionStorage.getItem('type')=="Candidate")
@@ -18,7 +18,7 @@ useEffect(() => {
        token="tokenCand";
     }
   const func=async()=>{
-    console.log(localStorage.getItem(token))
+    // console.log(localStorage.getItem(token))
     const response=await fetch('/api/auth/logininfo',{
         method:"GET",
         headers:{
@@ -30,7 +30,7 @@ useEffect(() => {
     const json =await response.json();
     if(json.success)
     {
-        console.log(json)
+        // console.log(json)
         json.info.reverse()
         setInfo(json.info);
     }
@@ -50,53 +50,74 @@ useEffect(() => {
         }} type='button' style={{width:"150px",position:"relative"}} className='admin'>Update Profile</button>
         </div>
         <div className="profiledetails">
-            <ul>
-                <li>Name</li>
-                <li>Number</li>
-                <li>Email</li>
-                <li>Logged In As</li>
-                <li>Subscription</li>
-            </ul>
-            <ul>
-                <li>{user.name}</li>
-                <li>{user.number}</li>
-                <li>{user.email}</li>
-                <li>{user.type}</li>
-                <li>{user.Subscription}</li>
-            </ul>
+            <tr>
+                <td>Name</td>
+                <td>Number</td>
+                <td>Email</td>
+                <td>Logged In As</td>
+                <td>Subscription</td>
+            </tr>
+            <tr>
+                <td>{user.name}</td>
+                <td>{user.number}</td>
+                <td>{user.email}</td>
+                <td>{user.type}</td>
+                <td>{user.Subscription}</td>
+            </tr>
        </div>
       {user?.type=='Candidate' && <div className="applications">
         <h1>Your Applications</h1>
+        <tr>
+                    <td>Role</td>
+                    <td>Company</td>
+                    <td>JobType</td>
+                    <td>Status</td>
+                </tr>
              {applications?.length && applications.map((ele,key)=>{
-                 return <ul>
-                    <li>{ele.postId?.role}</li>
-                    <li>{ele.postId?.company}</li>
-                    <li>{ele.postId?.JobOrIntern}</li>
-                    <li>{ele.status?"Approved":"Pending"}</li>
-                </ul>
+                 return <tr>
+                    <td>{ele.postId?.role}</td>
+                    <td>{ele.postId?.company}</td>
+                    <td>{ele.postId?.JobOrIntern}</td>
+                    <td className='register'>{ele.status?"Approved":"Pending"}</td>
+                </tr>
              })}
        </div>}
       {user?.type=='Employee' && <div className="posts">
         <h1>Your Job Posts</h1>
+        <tr>
+                    <td>Role</td>
+                    <td>Company</td>
+                    <td>JobType</td>
+                </tr>
         {userPosts?.length && userPosts.map((ele,key)=>{
-            return <ul>
-                    <li>{ele.postId?.role}</li>
-                    <li>{ele.postId?.company}</li>
-                    <li>{ele.postId?.JobOrIntern}</li>
-                </ul>
+            return <tr>
+                    <td>{ele.role}</td>
+                    <td>{ele.company}</td>
+                    <td>{ele.JobOrIntern}</td>
+                </tr>
              })}
        </div>}
       { <div className="posts">
         <h1>Recent Login</h1>
+        <table>
+
+        <tr>
+                    <td>Operating System</td>
+                    <td>IP Address</td>
+                    <td>Device</td>
+                    <td>Browser</td>
+                    <td>Time</td>
+                </tr>
         {loginInfo!=[] && loginInfo.slice(0,Math.min(5,loginInfo.length)).map((ele,key)=>{
-            return <ul>
-                    <li>{ele.os}</li>
-                    <li>{ele.ip}</li>
-                    <li>{ele.device}</li>
-                    <li>{ele.browser}</li>
-                    <li>{ele.timestamp.slice(0,10)+" "+ele.timestamp.slice(12,20)}</li>
-                </ul>
+          return <tr>
+                    <td>{ele.os}</td>
+                    <td>{ele.ip}</td>
+                    <td>{ele.device}</td>
+                    <td>{ele.browser}</td>
+                    <td>{ele.timestamp.slice(0,10)+" "+ele.timestamp.slice(12,20)}</td>
+                </tr>
              })}
+        </table>
        </div>}
     </div>}
              </>

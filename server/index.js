@@ -39,6 +39,7 @@ const PORT=process.env.PORT|| 5000
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/app',require('./routes/apply'))
 app.use('/api/posts',require('./routes/post'))
+app.use('/api/pay',require('./routes/payments'))
 
 
 // console.log(path.resolve(__dirname, "../client", "build"))

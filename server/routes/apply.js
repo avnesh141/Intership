@@ -32,7 +32,10 @@ router.post('/apply',fetchuser,async(req,res)=>{
             newuser= await User.findByIdAndUpdate(userid,{Subscription:"Expire",countRem:0});
         }
         else{
-            newuser= await User.findByIdAndUpdate(userid,{countRem:user.countRem-1});
+            if(user.Subscription!='Gold')
+            {
+                newuser= await User.findByIdAndUpdate(userid,{countRem:user.countRem-1});
+            }
         }
         const post=await Post.findById(id);
         console.log(id)
@@ -56,6 +59,31 @@ router.get('/getall',fetchuser,async(req,res)=>{
     }
 })
 
+router.get('/getallEmp',fetchuser,async(req,res)=>{
+    let success=false;
+    try {
+        const user=req.user.id;
+       let application=await Application.find().populate('postId');
+       success=true;
+       res.status(200).send({application,success});
+    } catch (error) {
+        // console.log(error.message);
+        res.status(501).send({error,success});
+    }
+})
+router.put('/update',async(req,res)=>{
+    let success=false;
+    try {
+        const id=req.body.id;
+       let application=await Application.findByIdAndUpdate(id,{status:true});
+       success=true;
+    //    clg
+       res.status(200).send({application,success});
+    } catch (error) {
+        console.log(error.message);
+        res.status(501).send({error,success});
+    }
+})
 
 
 

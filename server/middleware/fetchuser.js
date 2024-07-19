@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const fetchuser =async (req, res, next) => {
     // console.log(req);
+    console.log("sorry aaye hain ")
     // console.log(req.protocol+req.hostname+req.path+req.originalUrl+req.subdomains)     // "https"
 //   console.log()     // "example.com"
 //   console.log()         // "/creatures"
@@ -11,6 +12,7 @@ const fetchuser =async (req, res, next) => {
     let success=false;
     try {
         let token = req.header('authtoken');
+        // console.log(token)
         // console.log(token)
            if (!token)
             {
@@ -31,8 +33,9 @@ const fetchuser =async (req, res, next) => {
                 const email=data.email;
                 const type=req.header('type');
                 // console.log(type);
+                // console.log(email)
                 let user=await User.findOne({email,type});
-            // console.log(user);
+                // console.log(user);
             if(user != null )
             {
                 const finUser={
@@ -44,6 +47,7 @@ const fetchuser =async (req, res, next) => {
             }
             else
             {
+                console.log('Yaha hai error')
                 return res.status(500).send({"error":"User Not Exist register first","success":false})
             }
         }
@@ -52,7 +56,7 @@ const fetchuser =async (req, res, next) => {
     } catch (error) {
         // console.log("Error yhi hai")
         
-        // console.log(error);
+        console.log(error.message);
         return res.status(500).send({ error,success});
     }
 }

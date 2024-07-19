@@ -54,16 +54,19 @@ export default function Navbar() {
             </>
             }
            { loggedIn &&
+           <>
             <button className='login' onClick={()=>{
               localStorage.removeItem('tokenCand');
               setLoggedIn(false)
               navigate('/login')
             }}>Logout</button>
-                    }
-          </div>
-          <div className="hire">
+            <div className="hire">
            <button className='mt-4 mx-7'><Link to='/plans'>Subscriptions</Link></button>
           </div>
+            </>
+                    }
+          </div>
+          
           <div className="hire">
            <button className='mt-4 mx-7'><Link to='/hire'>Hire Talent</Link></button>
           </div>

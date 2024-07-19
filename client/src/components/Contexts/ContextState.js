@@ -46,20 +46,20 @@ function ContextState(props) {
       setsidebaropen(true);
     }
   }
-  // useEffect(() => {
-  //   if (localStorage.getItem("tokenCand")) {
-  //     setLoggedIn(true);
-  //   }
-  //   else {
-  //     setLoggedIn(false);
-  //   }
-  //   if (localStorage.getItem("tokenEmp")) {
-  //     setLoggedInEmp(true);
-  //   }
-  //   else {
-  //     setLoggedInEmp(false);
-  //   }
-  // },[])
+  useEffect(() => {
+    if (localStorage.getItem("tokenCand")) {
+      setLoggedIn(true);
+    }
+    else {
+      setLoggedIn(false);
+    }
+    if (localStorage.getItem("tokenEmp")) {
+      setLoggedInEmp(true);
+    }
+    else {
+      setLoggedInEmp(false);
+    }
+  },[])
  
   const [change,setChange]=useState(0);
 
@@ -75,6 +75,7 @@ function ContextState(props) {
           "type":sessionStorage.getItem('type')
         }
       })
+      console.log(window.onload)
       let json = await response.json();
       setdata(json.posts);
       // data.forEach(element => {
@@ -146,8 +147,13 @@ function ContextState(props) {
         }
       })
       const json3=await response3.json();
+      console.log(json3)
       console.log(json3.posts)
-      setuserPosts(json3.posts);
+      if(json.success){
+
+        setuserPosts(json3.posts);
+        console.log(userPosts)
+      }
     }
     func();
   }, [loggedIn,loggedInEmp,change])

@@ -17,6 +17,7 @@ function Home() {
                     <h2>Post Internships for Free & Hire Talent with up to 2 Years of Experience</h2>
                 {!loggedInEmp && <div className="loginSignUp"><Link to='/loginemployee'><em>Login As Employer</em></Link></div>}
                 { loggedInEmp && <div className="loginSignUp"><Link to='/post'><em>Post Job</em></Link></div>}
+                { loggedInEmp && <div className="loginSignUp"><Link to='/manage'><em>Manage Applications</em></Link></div>}
                 { loggedInEmp && <div className="loginSignUp"><Link onClick={(e)=>{
                     e.preventDefault();
 

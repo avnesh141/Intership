@@ -21,6 +21,7 @@ import Phone from './components/Authentication/Verification/Phone';
 import context from './components/Contexts/Context';
 import JobCard from './components/Jobs/JobCard';
 import JobsPage from './components/Jobs/JobsPage';
+import ManageApplications from './components/Hire/ManageApplications';
 function App() {
 
 const cntxt=useContext(context)
@@ -173,6 +174,7 @@ const {authentic,setAuthentic,loggedIn,loggedInEmp}=cntxt;
       <Route path='/verifyemail' element={<Email/>}/>
       <Route path='/verifynumber' element={<Phone/>}/>
       <Route path='/profile' element={<Profile/>}/>
+      <Route path='/manage' element={<ManageApplications/>}/>
       <Route path='/updateprofile' element={<UpdateProfile/>}/>
       {/* <Route path="/intern" element={<InternPage title="Campus Ambassador Work From Home Part Time Internship"/>} /> */}
       <Route path="/:id" element={<InternPage title="Campus Ambassador Work From Home Part Time Internship"/>} />
