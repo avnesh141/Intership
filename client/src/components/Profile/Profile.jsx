@@ -50,20 +50,20 @@ useEffect(() => {
         }} type='button' style={{width:"150px",position:"relative"}} className='admin'>Update Profile</button>
         </div>
         <div className="profiledetails">
-            <tr>
-                <td>Name</td>
-                <td>Number</td>
-                <td>Email</td>
-                <td>Logged In As</td>
-                <td>Subscription</td>
-            </tr>
-            <tr>
-                <td>{user.name}</td>
-                <td>{user.number}</td>
-                <td>{user.email}</td>
-                <td>{user.type}</td>
-                <td>{user.Subscription}</td>
-            </tr>
+            <ul>
+                <li>Name</li>
+                <li>Number</li>
+                <li>Email</li>
+                <li>Logged In As</li>
+                <li>Subscription</li>
+            </ul>
+            <ul>
+                <li>{user.name}</li>
+                <li>{user.number}</li>
+                <li>{user.email}</li>
+                <li>{user.type}</li>
+                <li>{user.Subscription}</li>
+            </ul>
        </div>
       {user?.type=='Candidate' && <div className="applications">
         <h1>Your Applications</h1>
