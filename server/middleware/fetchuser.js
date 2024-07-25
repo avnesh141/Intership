@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const fetchuser =async (req, res, next) => {
     // console.log(req);
-    console.log("sorry aaye hain ")
+    // console.log("sorry aaye hain ")
     // console.log(req.protocol+req.hostname+req.path+req.originalUrl+req.subdomains)     // "https"
 //   console.log()     // "example.com"
 //   console.log()         // "/creatures"
@@ -32,8 +32,8 @@ const fetchuser =async (req, res, next) => {
             {
                 const email=data.email;
                 const type=req.header('type');
-                console.log(type);
-                console.log(email)
+                // console.log(type);
+                // console.log(email)
                 let user=await User.findOne({email,type});
                 // console.log(user);
             if(user != null )
