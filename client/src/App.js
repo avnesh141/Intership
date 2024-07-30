@@ -85,7 +85,7 @@ function App() {
     // console.log(navigator.userAgent)
     // return regex.test(navigator.userAgent);
     // console.log(window.innerWidth)
-    return ( ( window.innerWidth <= 400 )  );
+    return ( ( window.innerWidth <= 500 )  );
   }
   
 
