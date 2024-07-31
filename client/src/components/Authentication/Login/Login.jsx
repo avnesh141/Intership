@@ -18,11 +18,12 @@ function Login(props) {
   const {setLoggedIn,setLoggedInEmp,authentic,setAuthentic}=cntxt;
 
   const onchange = (e) => {
+    // console.log(e.target.name,e.target.value)
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
    const clickhandler=async()=>{
-    console.log(data)
+    // console.log(data)
     toast.success("Wait Your Request is processing")
 
           const response =await fetch("/api/auth/login",{
@@ -174,10 +175,16 @@ useEffect(() => {
        <div className='flex'>
        <label style={{color:`${inputEmail?'green':'black'}`}} className='mx-4' htmlFor="email" onClick={()=>{
          setEmail(true)
+         let d=data
+          d.number=""
+          setData(d);
         }}>Email</label>
         <p>or</p>
         <label style={{color:`${!inputEmail?'green':'black'}`}} className='mx-4 inline-block' htmlFor="phone" onClick={()=>{
-          setEmail(false)
+          let d=data
+          d.email="";
+          setData(d);
+         setEmail(false)
         }}>Phone</label>
         </div>
        {inputEmail &&

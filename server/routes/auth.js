@@ -113,6 +113,7 @@ router.post(
       const email = req.body.email;
       const number = req.body.number;
       const type = req.header('type');
+      console.log(email)
       console.log(number)
       if (email != "") {
         console.log("email se")
