@@ -42,7 +42,7 @@ function Login(props) {
               if(props.type=="Candidate")
                 {
                  localStorage.setItem(token, json.authtoken);
-                 if(sessionStorage.getItem('browser')!='Chrome')
+                 if(sessionStorage.getItem('browser')=='Chrome')
                   {
                      navigate('/verifyemail');
                   }
@@ -59,7 +59,7 @@ function Login(props) {
               {
                 
                   localStorage.setItem(token, json.authtoken);
-                   if(sessionStorage.getItem('browser')!='Chrome')
+                   if(sessionStorage.getItem('browser')=='Chrome')
                     {
                        navigate('/verifyemail');
                     }
@@ -109,7 +109,7 @@ const handleCredentialResponse= async(cred)=>{
     if(props.type=="Candidate")
       {
       //  localStorage.setItem(token, json.authtoken);
-       if(sessionStorage.getItem('browser')!='Chrome')
+       if(sessionStorage.getItem('browser')=='Chrome')
         {
            navigate('/verifyemail');
         }
@@ -125,7 +125,7 @@ const handleCredentialResponse= async(cred)=>{
     else
     {
         // localStorage.setItem(token, json.authtoken);
-         if(sessionStorage.getItem('browser')!='Chrome')
+         if(sessionStorage.getItem('browser')=='Chrome')
           {
              navigate('/verifyemail');
           }
