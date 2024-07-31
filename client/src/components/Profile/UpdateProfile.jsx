@@ -11,7 +11,7 @@ function UpdateProfile() {
     const [style,setStyle]=useState('adventure');
     const [seed,setseed]=useState('');
     const [show,setShow]=useState(false);
-    const url=`https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`;
+    const [url,setUrl]=useState(`https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`);
 
     const navigate=useNavigate();
 
@@ -43,6 +43,12 @@ function UpdateProfile() {
             toast.error("Some Error occurred");
         }
     }
+ const onchangeHandler=async(e)=>{
+         const file=(e.target.files)[0]
+        const base=await converttoBase64(file)
+        console.log(base.length)
+        setUrl(base)
+ }
 
   return (
     <div className="jobpost registerPage updateprofile">
@@ -50,6 +56,7 @@ function UpdateProfile() {
         <select onChange={(e)=>{
             setShow(false);
             setStyle(e.target.value);
+            setUrl(`https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`)
         }} className='selectOption' name="style" id="">
             <option value="avataaars">Avataaars</option>
             <option value="avataaars-neutral">Avataaars Neutral</option>
@@ -83,25 +90,50 @@ function UpdateProfile() {
         <input onChange={(e)=>{
             setShow(false);
             setseed(e.target.value);
+            // if(seed==""){
+            //     setUrl(`https://api.dicebear.com/9.x/${style}/svg`)
+            // }else{
+                setUrl(`https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`)
+            // }
         }} style={{width:"30%"}} type="text" name="seed" id="" />
-        <button onClick={()=>{
+        {/* <button onClick={()=>{
             setShow(true);
             console.log(url)
-        }} className='admin'>Search</button>
+        }} className='admin'>Search</button> */}
         { show &&
         <>
-         <img style={{width:"20%"}} src={url} alt="" />
-        <button style={{width:"150px"}} onClick={()=>{
+        
+        </>
+                
+            }
+            <>
+            <input style={{width:"300px"}} onChange={(e)=>{
+                console.log("s")
+                onchangeHandler(e)
+            }}  accept='.'   type='file'  />
+            
+            <img style={{width:"20%"}} src={url} alt="" />
+            <button style={{width:"150px"}} onClick={()=>{
             setprofile();
             navigate('/profile')
             // window.location.reload();
         }} className='admin'>Set as profile</button>
-        </>
-                
-         }
-        {/* <img src="ttps://api.dicebear.com/9.x/adventure/svg?seed=weee" alt="" /> */}
+            </>
     </div>
   )
+}
+
+function converttoBase64(file){
+    return new Promise((resolve,reject)=>{
+        const filereader= new FileReader();
+        filereader.readAsDataURL(file)
+        filereader.onload=()=>{
+            resolve(filereader.result)
+        }
+        filereader.onerror=(error)=>{
+            reject(error)
+        }
+    })
 }
 
 export default UpdateProfile
