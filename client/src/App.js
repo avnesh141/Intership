@@ -81,11 +81,11 @@ function App() {
    sessionStorage.setItem('browser',browser);
   }
   function isMobile() {
-    // const regex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const regex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     // console.log(navigator.userAgent)
-    // return regex.test(navigator.userAgent);
+    return regex.test(navigator.userAgent);
     // console.log(window.innerWidth)
-    return ( ( window.innerWidth <= 500 )  );
+    // return ( ( window.innerWidth <= 500 )  );
   }
   
 

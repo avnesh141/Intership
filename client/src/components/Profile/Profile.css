@@ -4,6 +4,7 @@
 }
 .profile h1{
     font-size: 30px;
+    color: #261ACB;
     font-weight: 500;
 }
 .profilephoto img{
@@ -55,16 +56,44 @@
     justify-content: space-between;
     /* justify-content: center; */
 }
-.posts tr{
-    width: 100%;
+.applications li{
+    width: 20%;
     display: flex;
+    margin: 2px;
     justify-content: space-between;
-    /* justify-content: center; */
+    justify-content: center;
+    /* flex-wrap: nowrap; */
 }
-.posts ul{
+/* .posts ul{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* justify-content: center; */
+    justify-content: center;
+} */
+
+.posts ul{
+    color: red;
+    width: 100%;
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+}
+.posts li{
+    width: 25%;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
 }
 
+.ulhead {
+    background-color: #abb2e1;
+    /* width:120%; */
+    border-radius: 5px;
+    /* co */
+}
+
+
+/* .status{ */
+    /* height: 100px; */
+/* } */

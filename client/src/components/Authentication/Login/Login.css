@@ -7,7 +7,7 @@
     width: 60vh;
     align-items: center;
     padding: 20px;
-    box-shadow: #078edd 2px 0px 2px 2px ;
+    box-shadow: #261ACB 2px 0px 2px 2px ;
     border-radius: 5px;
     background: white;
 }
@@ -26,7 +26,7 @@
 .loginPage h1{
    font-size: 30px;
    font-weight: bold;
-   color: #078edd;
+   color: #261ACB;
 }
 .loginPage p{
    font-weight:500;
@@ -40,7 +40,7 @@
 
 .loginbtn{
     width: 80%;
-    background: #078edd;
+    background: #261ACB;
     color: white;
     border-radius: 10px;
     padding: 7px;
@@ -48,7 +48,7 @@
 }
 
 .forget{
-    color: #078edd;
+    color: #261ACB;
     font-weight: bolder;
     margin: 10px;
 }

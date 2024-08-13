@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import context from '../Contexts/Context'
 import './Profile.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Profile() {
 const cntxt=useContext(context);
@@ -69,60 +69,61 @@ useEffect(() => {
        </div>
       {user?.type=='Candidate' && <div className="applications">
         <h1>Your Applications</h1>
-        <tr>
-                    <td>Role</td>
-                    <td>Company</td>
-                    <td>JobType</td>
-                    <td>Status</td>
-                </tr>
+        <ul className="ulhead">
+                    <li>Role</li>
+                    <li>Company</li>
+                    <li>JobType</li>
+                    <li>Status</li>
+                </ul>
              {applications?.length && applications.map((ele,key)=>{
-                 return <tr>
-                    <td>{ele.postId?.role}</td>
-                    <td>{ele.postId?.company}</td>
-                    <td>{ele.postId?.JobOrIntern}</td>
-                    <td className='register'>{ele.status?"Approved":"Pending"}</td>
-                </tr>
+                 return <ul>
+                    <li style={{cursor:"pointer",color:"#261ACB"}} onClick={()=>{
+                      navigate(`/${ele.postId?._id}`)
+                    }}>{ele.postId?.role}</li>
+                    <li>{ele.postId?.company}</li>
+                    <li>{ele.postId?.JobOrIntern}</li>
+                    <li className=' status register'>{ele.status?"Approved":"Pending"}</li>
+                </ul>
              })}
        </div>}
       {user?.type=='Employee' && <div className="posts">
         <h1>Your Job Posts</h1>
-        <tr>
-                    <td>Role</td>
-                    <td>Company</td>
-                    <td>JobType</td>
-                </tr>
+        <ul className="ulhead">
+                    <li>Role</li>
+                    <li>Company</li>
+                    <li>JobType</li>
+                </ul>
         {userPosts?.length && userPosts.map((ele,key)=>{
-            return <tr>
-                    <td>{ele.role}</td>
-                    <td>{ele.company}</td>
-                    <td>{ele.JobOrIntern}</td>
-                </tr>
+            return <ul>
+                    <li style={{cursor:"pointer",color:"#261ACB"}} onClick={()=>{
+                      navigate(`/${ele.postId?._id}`)
+                    }}>{ele.role}</li>
+                    <li>{ele.company}</li>
+                    <li>{ele.JobOrIntern}</li>
+                </ul>
              })}
        </div>}
       { <div className="posts">
         <h1>Recent Login</h1>
-        <table>
-
-        <tr>
-                    <td>Operating System</td>
-                    <td>IP Address</td>
-                    <td>Device</td>
-                    <td>Browser</td>
-                    <td>Time</td>
-                </tr>
+        <ul className="ulhead">
+                    <li>Operating System</li>
+                    <li>IP Address</li>
+                    <li>Device</li>
+                    <li>Browser</li>
+                    <li>Time</li>
+                </ul>
         {loginInfo!=[] && loginInfo.slice(0,Math.min(5,loginInfo.length)).map((ele,key)=>{
-          return <tr>
-                    <td>{ele.os}</td>
-                    <td>{ele.ip}</td>
-                    <td>{ele.device}</td>
-                    <td>{ele.browser}</td>
-                    <td>{ele.timestamp.slice(0,10)+" "+ele.timestamp.slice(12,20)}</td>
-                </tr>
+          return <ul>
+                    <li>{ele.os}</li>
+                    <li>{ele.ip}</li>
+                    <li>{ele.device}</li>
+                    <li>{ele.browser}</li>
+                    <li>{ele.timestamp.slice(0,10)+" "+ele.timestamp.slice(12,20)}</li>
+                </ul>
              })}
-        </table>
        </div>}
     </div>}
-             </>
+    </>
   )
 }
 

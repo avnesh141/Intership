@@ -14,7 +14,7 @@ input::-webkit-inner-spin-button {
     width: 60vh;
     align-items: center;
     padding: 20px;
-    box-shadow: #078edd 2px 0px 2px 2px ;
+    box-shadow: #261ACB 2px 0px 2px 2px ;
     border-radius: 5px;
 }
 
@@ -32,7 +32,7 @@ input::-webkit-inner-spin-button {
 .registerPage h1{
    font-size: 30px;
    font-weight: bold;
-   color: #078edd;
+   color: #261ACB;
 }
 .registerPage p{
    font-weight:500;
@@ -46,18 +46,18 @@ input::-webkit-inner-spin-button {
 
 .registerbtn{
     width: 80%;
-    background: #078edd;
+    background: #261ACB;
     color: white;
     border-radius: 10px;
     padding: 7px;
 }
 
 .forget{
-    color: #078edd;
+    color: #261ACB;
     font-weight: bolder;
     margin: 10px;
 }
 
 .registerHere{
-    color: #078edd;
+    color: #261ACB;
 }

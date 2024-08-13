@@ -7,7 +7,8 @@ function Card(props) {
     // console.log(data)
     return (
         <div className="Jobcard">
-            
+                        <div className='hiringtag'><i className="bi bi-arrow-up-right"></i> Actively Hiring</div>
+
             <div className='jobtitle'>{data.role}</div>
             <div>
                {data.company}

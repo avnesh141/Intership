@@ -14,7 +14,7 @@ function Home() {
         <div className="home">
             <div className="head1">
                 <h1>Elevate Your Career : One Click Away from Success</h1>
-                <h5>Trending On InterNet Today 🔥</h5>
+                <h2>Trending On InterNet Today 🔥</h2>
             </div>
 
             <div className="slider">

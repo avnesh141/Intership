@@ -8,6 +8,7 @@
 
 }
 .manageAppli h1{
+    color: #261ACB;
     font-size: 40px;
     font-weight: 500;
    position: relative;
@@ -17,7 +18,21 @@
 .managebox ul{
     display: flex;
    justify-content: space-between;
+   /* overflow-x: scroll; */
    width: 80%;
+}
+.managebox li{
+    margin: 2px;
+    display: flex;
+   justify-content:center;
+   width: 25%;
+}
+.managebox li button{
+   display: flex;
+   justify-content:center;
+   margin: 0;
+   padding:0;
+   width: 35%;
 }
 
 .managebox{

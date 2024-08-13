@@ -78,7 +78,6 @@ function InternPage(props) {
       toast.error(json.error);
     }
   }
-
   return (
     <div className="internPage">
       <div className="pageTitle">

@@ -12,6 +12,7 @@
     width: 20rem;
     margin: 20px;
     padding: 10px;
+    color: green;
 }
 @media (max-width:800px) {
   .PlanCard{

@@ -5,7 +5,7 @@
    /* flex-direction: column; */
 }
 .categories ul li{
-   border: solid 2px rgb(91, 178, 202);
+   border: solid 2px #261ACB;
    border-radius: 25px;
    padding: 5px;
    margin: 15px;

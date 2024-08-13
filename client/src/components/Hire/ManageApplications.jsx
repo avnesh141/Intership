@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import context from '../Contexts/Context';
 import './Manage.css'
+import { useNavigate } from 'react-router-dom';
 
 function ManageApplications() {
 
+  const navigate=useNavigate();
     const cntxt=useContext(context);
     const {user}=cntxt;
     const [data,setdata]=useState([]);
@@ -49,7 +51,7 @@ function ManageApplications() {
         {
             data.length!=0 
             && 
-              <ul>
+              <ul className="ulhead">
                 <li>Role</li>
                 <li>Company</li>
                 <li>JobType</li>
@@ -61,16 +63,20 @@ function ManageApplications() {
             data.length!=0 
             && data.map((ele)=>{
                 return <ul>
-                <li>{ele.postId?.role}</li>
+                <li style={{cursor:"pointer",color:"#261ACB"}} onClick={()=>{
+                      navigate(`/${ele.postId?._id}`)
+                    }}>{ele.postId?.role}</li>
                 <li>{ele.postId?.company}</li>
                 <li>{ele.postId?.JobOrIntern}</li>
                 <li>{ele.date}</li>
+                <li>
                 <button onClick={()=>{
-                    console.log(ele._id)
-                    onclickhandler(ele._id)
+                  console.log(ele._id)
+                  onclickhandler(ele._id)
                 }} disabled={ele.status} className='register'>
                 <li>{ele.status?"Approved":"Pending"}</li>
                 </button>
+                  </li>
             </ul>
             })
         }

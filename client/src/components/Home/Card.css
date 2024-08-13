@@ -41,18 +41,18 @@
     border: 2px rgb(91, 178, 202) solid;
     width: 150px;
     border-radius: 5px;
-    color: #078edd;
+    color: #261ACB;
 }
 
 .titlename{
-   background: #078edd;
+   background: #261ACB;
    border-radius: 5px; 
    padding: 2.5px;  
    color: white;
 }
 
 .titlelink{
-    color: #078edd;
+    color: #261ACB;
 }
 
 .line{

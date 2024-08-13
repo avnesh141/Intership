@@ -6,13 +6,12 @@
     border: 1px solid blue;
     padding: 10px;
     margin: 20px;
-    
-    
 }
 
 
 
 .activetag{
+    font-weight: bold;
     width: 18%;
    font-size:   12px;
    border-radius: 25px;
@@ -20,7 +19,8 @@
 .jobrole{
    
     /* justify-content: space-between; */
-    color: #078edd;
+    color: #261ACB;
+    font-weight: bold;
     display: flex;
 }
 .jobrole div{
