@@ -17,7 +17,7 @@ function Card(props) {
             <div className="line"></div>
 
             <ul className='jobCardDetails'>            
-                <li><i className="bi bi-geo-alt"></i> {data.country}, {data.city}</li>
+                <li><i  className="bi bi-geo-alt"></i> {data.country}, {data.city}</li>
                 <li><i className="bi bi-cash-coin"></i> {data.Stipend==-1?'Not mentioned':data.Stipend}</li>
                 <li><i className="bi bi-calendar-fill"></i> 6 months</li>
             </ul>

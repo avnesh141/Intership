@@ -96,7 +96,7 @@ useEffect(() => {
         {userPosts?.length && userPosts.map((ele,key)=>{
             return <ul>
                     <li style={{cursor:"pointer",color:"#261ACB"}} onClick={()=>{
-                      navigate(`/${ele.postId?._id}`)
+                      navigate(`/${ele._id}`)
                     }}>{ele.role}</li>
                     <li>{ele.company}</li>
                     <li>{ele.JobOrIntern}</li>

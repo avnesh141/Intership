@@ -25,8 +25,6 @@ import ManageApplications from './components/Hire/ManageApplications';
 function App() {
 
 
-
-  // console.log("dkdk")
   let browser="Chrome";
   function checkBrowser() { 
           
@@ -191,3 +189,6 @@ function App() {
 }
 
 export default App;
+
+
+

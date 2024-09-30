@@ -24,6 +24,10 @@ function InternPage(props) {
     // console.log("sec",application)
     if(application)
     {
+      // let date=new Date();
+      // console.log(date.toISOString())
+      // console.log(new Date(application.StartDate));
+      // console.log();
       setatp(application.AbouttheProgram.split('.'));
       setskills(application.skillsRequired.split(','));
       setperks(application.perks.split(','));

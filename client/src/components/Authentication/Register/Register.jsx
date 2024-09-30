@@ -53,7 +53,7 @@ const {setLoggedIn,setLoggedInEmp}=cntxt;
               if(props.type=="Candidate")
               {
                 localStorage.setItem(token, json.authtoken);
-                if(sessionStorage.getItem('browser')=='Chrome')
+                if(sessionStorage.getItem('browser')=='Chrome' && data.email!="")
                  {
                     navigate('/verifyemail');
                  }
@@ -70,7 +70,7 @@ const {setLoggedIn,setLoggedInEmp}=cntxt;
               {
                  
                   localStorage.setItem(token, json.authtoken);
-                   if(sessionStorage.getItem('browser')=='Chrome')
+                   if(sessionStorage.getItem('browser')=='Chrome' && data.email!="")
                     {
                        navigate('/verifyemail');
                     }

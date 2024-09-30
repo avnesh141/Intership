@@ -7,7 +7,8 @@ import fourth from "../../Assets/slide4.webp"
 import TemplateJob from './TemplateJob'
 
 function Home() {
-
+     
+    // <div className="ele"></div>
     // console.log(navigator)
 
     return (
