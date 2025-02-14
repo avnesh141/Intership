@@ -1,5 +1,5 @@
 import './App.css';
- 
+//  hello my name is akash kumar
 import { Route, BrowserRouter as Router,Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
